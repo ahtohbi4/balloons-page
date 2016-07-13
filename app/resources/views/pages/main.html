@@ -40,12 +40,29 @@
 
     <header>
         <h1>%title%</h1>
-        <blockquote></blockquote>
+        <blockquote>%quote%</blockquote>
     </header>
 
-    <section class="timeline">
-        <time>%date</time>
-        <div>%description%</div>
+    <section class="main">
+        <h2>%timeline title%</h2>
+        <p>%timeline intro%</p>
+
+        <ol class="timeline">
+            <li class="timeline__event">
+                <time class="timeline__event-date">%date%</time>
+                <div class="timeline__event-description">%description%</div>
+            </li>
+
+            <li class="timeline__event">
+                <time class="timeline__event-date">%date%</time>
+                <div class="timeline__event-description">%description%</div>
+            </li>
+
+            <li class="timeline__event">
+                <time class="timeline__event-date">%date%</time>
+                <div class="timeline__event-description">%description%</div>
+            </li>
+        </ol>
     </section>
 
     <footer></footer>
