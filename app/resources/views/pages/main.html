@@ -21,11 +21,34 @@
 </head>
 
 <body>
-    %content%
+    <nav>
+        <ul>
+            <li>
+                <a>Tours</a>
+            </li>
+            <li>
+                <a>Countries</a>
+            </li>
+            <li>
+                <a>About</a>
+            </li>
+            <li>
+                <a>Contacts</a>
+            </li>
+        </ul>
+    </nav>
 
-    <!-- Place your JavaScript here.
-         NOTE: Use a some number of subdomains to parallel downloads -->
-    <script src="//st1.example.com/path/to/script.js"></script>
+    <header>
+        <h1>%title%</h1>
+        <blockquote></blockquote>
+    </header>
+
+    <section class="timeline">
+        <time>%date</time>
+        <div>%description%</div>
+    </section>
+
+    <footer></footer>
 
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-21201176-2','auto');ga('send','pageview');</script>
 </body>
