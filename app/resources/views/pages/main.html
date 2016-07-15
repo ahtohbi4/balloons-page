@@ -21,51 +21,83 @@
 </head>
 
 <body>
-    <nav>
-        <ul>
-            <li>
-                <a>Tours</a>
-            </li>
-            <li>
-                <a>Countries</a>
-            </li>
-            <li>
-                <a>About</a>
-            </li>
-            <li>
-                <a>Contacts</a>
-            </li>
-        </ul>
-    </nav>
+    <div class="page">
+        <header class="header">
+            <nav class="menu-main">
+                <ul>
+                    <li>
+                        <a>Tours</a>
+                    </li>
+                    <li>
+                        <a>Countries</a>
+                    </li>
+                    <li>
+                        <a>About</a>
+                    </li>
+                    <li>
+                        <a>Contacts</a>
+                    </li>
+                </ul>
+            </nav>
 
-    <header>
-        <h1>%title%</h1>
-        <blockquote>%quote%</blockquote>
-    </header>
+            <h1>%title%</h1>
+            <blockquote>
+                <p>%quote%</p>
+                <cite>%author%</cite>
+            </blockquote>
+        </header>
 
-    <section class="main">
-        <h2>%timeline title%</h2>
-        <p>%timeline intro%</p>
+        <section class="main">
+            <h2>%timeline title%</h2>
+            <p>%timeline intro%</p>
 
-        <ol class="timeline">
-            <li class="timeline__event">
-                <time class="timeline__event-date">%date%</time>
-                <div class="timeline__event-description">%description%</div>
-            </li>
+            <ol class="timeline">
+                <li class="timeline__event">
+                    <time class="timeline__event-date"><em>220-280 AD</em></time>
+                    <div class="timeline__event-description">%description%</div>
+                </li>
 
-            <li class="timeline__event">
-                <time class="timeline__event-date">%date%</time>
-                <div class="timeline__event-description">%description%</div>
-            </li>
+                <li class="timeline__event">
+                    <time class="timeline__event-date"><em>August 8, 1709</em></time>
+                    <div class="timeline__event-description">%description%</div>
+                </li>
 
-            <li class="timeline__event">
-                <time class="timeline__event-date">%date%</time>
-                <div class="timeline__event-description">%description%</div>
-            </li>
-        </ol>
-    </section>
+                <li class="timeline__event">
+                    <time class="timeline__event-date"><em>August 23, 1783</em></time>
+                    <div class="timeline__event-description">%description%</div>
+                </li>
 
-    <footer></footer>
+                <li class="timeline__event">
+                    <time class="timeline__event-date"><em>September 19, 1783</em></time>
+                    <div class="timeline__event-description">%description%</div>
+                </li>
+
+                <li class="timeline__event">
+                    <time class="timeline__event-date"><em>November 21, 1783</em></time>
+                    <div class="timeline__event-description">%description%</div>
+                </li>
+
+                <li class="timeline__event">
+                    <time class="timeline__event-date"><em>December 1, 1783</em></time>
+                    <div class="timeline__event-description">%description%</div>
+                </li>
+
+                <li class="timeline__event">
+                    <time class="timeline__event-date"><em>August 27, 1784</em></time>
+                    <div class="timeline__event-description">%description%</div>
+                </li>
+
+                <li class="timeline__event-separator">…</li>
+
+                <li class="timeline__event">
+                    <time class="timeline__event-date"><em>1994</em></time>
+                    <div class="timeline__event-description">%description%</div>
+                </li>
+            </ol>
+        </section>
+    </div>
+
+    <footer>© 2016</footer>
 
     <script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');ga('create','UA-21201176-2','auto');ga('send','pageview');</script>
 </body>
