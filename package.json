@@ -18,8 +18,10 @@
   "homepage": "https://github.com/ahtohbi4/balloons-page#readme",
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-htmlmin": "^1.2.0",
+    "gulp-clean": "^0.3.2",
+    "gulp-posthtml": "^1.5.2",
     "gulp-rename": "^1.2.2",
-    "postcss": "^5.1.0"
+    "postcss": "^5.1.0",
+    "posthtml-minifier": "^0.1.0"
   }
 }
