@@ -13,7 +13,9 @@ const bgImage = require('postcss-bgimage');
 
 const PATHS = {
     src: './app/resources/views/pages/',
-    dest: './build/'
+    dest: './build/',
+    destWithoutPlugin: './build/without-plugin/',
+    destWithPlugin: './build/with-plugin/'
 };
 
 gulp.task('clean', () => {
@@ -23,6 +25,15 @@ gulp.task('clean', () => {
         .pipe(clean());
 });
 
+/**
+ * Appends a link.
+ *
+ * @param {object} tree
+ * @param {string} parent
+ * @param {string} fileName
+ *
+ * @returns {boolean}
+ */
 const appendLink = (tree, parent, fileName) => {
     tree.match({
         tag: parent
@@ -49,7 +60,7 @@ gulp.task('html', () => {
         .pipe(posthtml((tree) => {
             appendLink(tree, 'head', 'style.css');
         }))
-        .pipe(gulp.dest(`${PATHS.dest}without-plugin/`));
+        .pipe(gulp.dest(PATHS.destWithPlugin));
 
     let streamWithoutPlugin = gulp.src(`${PATHS.src}main.html`)
         .pipe(rename('index.html'))
@@ -59,7 +70,7 @@ gulp.task('html', () => {
         .pipe(posthtml((tree) => {
             appendLink(tree, 'body', 'style.bottom.css');
         }))
-        .pipe(gulp.dest(`${PATHS.dest}with-plugin/`));
+        .pipe(gulp.dest(PATHS.destWithoutPlugin));
 
     return merge(streamWithPlugin, streamWithoutPlugin);
 });
@@ -70,7 +81,7 @@ gulp.task('css', () => {
         .pipe(postcss([
             autoprefixer()
         ]))
-        .pipe(gulp.dest(`${PATHS.dest}without-plugin/`));
+        .pipe(gulp.dest(PATHS.destWithPlugin));
 
     let streamWithoutPluginTop = gulp.src(`${PATHS.src}main.css`)
         .pipe(rename('style.top.css'))
@@ -80,7 +91,7 @@ gulp.task('css', () => {
                 mode: 'cutter'
             })
         ]))
-        .pipe(gulp.dest(`${PATHS.dest}with-plugin/`));
+        .pipe(gulp.dest(PATHS.destWithoutPlugin));
 
     let streamWithoutPluginBottom = gulp.src(`${PATHS.src}main.css`)
         .pipe(rename('style.bottom.css'))
@@ -90,7 +101,7 @@ gulp.task('css', () => {
                 mode: 'cutterInvertor'
             })
         ]))
-        .pipe(gulp.dest(`${PATHS.dest}with-plugin/`));
+        .pipe(gulp.dest(PATHS.destWithoutPlugin));
 
     return merge(streamWithPlugin, streamWithoutPluginTop, streamWithoutPluginBottom);
 });
