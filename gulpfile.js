@@ -1,9 +1,15 @@
+'use strict';
+
 const gulp = require('gulp');
-const rename = require('gulp-rename');
 const clean = require('gulp-clean');
+const rename = require('gulp-rename');
+const merge = require('merge-stream');
 
 const posthtml = require('gulp-posthtml');
-const minifier = require('posthtml-minifier');
+
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const bgImage = require('postcss-bgimage');
 
 const PATHS = {
     src: './app/resources/views/pages/',
@@ -11,30 +17,53 @@ const PATHS = {
 };
 
 gulp.task('clean', () => {
-    gulp.src(PATHS.dest, {
+    return gulp.src(PATHS.dest, {
         read: false
     })
         .pipe(clean());
 });
 
 gulp.task('html', () => {
-    gulp.src(`${PATHS.src}main.html`)
+    let streamWithPlugin = gulp.src(`${PATHS.src}main.html`)
         .pipe(rename('index.html'))
-        .pipe(posthtml([
-            minifier({
-                collapseWhitespace: true,
-                removeComments: true
-            })
-        ]))
-        .pipe(gulp.dest(`${PATHS.dest}a/`))
-        .pipe(gulp.dest(`${PATHS.dest}b/`));
+        .pipe(gulp.dest(`${PATHS.dest}without-plugin/`));
+
+    let streamWithoutPlugin = gulp.src(`${PATHS.src}main.html`)
+        .pipe(rename('index.html'))
+        .pipe(gulp.dest(`${PATHS.dest}with-plugin/`));
+
+    return merge(streamWithPlugin, streamWithoutPlugin);
 });
 
 gulp.task('css', () => {
-    gulp.src(`${PATHS.src}main.css`)
+    let streamWithPlugin = gulp.src(`${PATHS.src}main.css`)
         .pipe(rename('style.css'))
-        .pipe(gulp.dest(`${PATHS.dest}a/`))
-        .pipe(gulp.dest(`${PATHS.dest}b/`));
+        .pipe(postcss([
+            autoprefixer()
+        ]))
+        .pipe(gulp.dest(`${PATHS.dest}without-plugin/`));
+
+    let streamWithoutPluginTop = gulp.src(`${PATHS.src}main.css`)
+        .pipe(rename('style.top.css'))
+        .pipe(postcss([
+            autoprefixer(),
+            bgImage({
+                mode: 'cutter'
+            })
+        ]))
+        .pipe(gulp.dest(`${PATHS.dest}with-plugin/`));
+
+    let streamWithoutPluginBottom = gulp.src(`${PATHS.src}main.css`)
+        .pipe(rename('style.bottom.css'))
+        .pipe(postcss([
+            autoprefixer(),
+            bgImage({
+                mode: 'cutterInvertor'
+            })
+        ]))
+        .pipe(gulp.dest(`${PATHS.dest}with-plugin/`));
+
+    return merge(streamWithPlugin, streamWithoutPluginTop, streamWithoutPluginBottom);
 });
 
 gulp.task('default', [

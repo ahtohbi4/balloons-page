@@ -18,11 +18,14 @@
   },
   "homepage": "https://github.com/ahtohbi4/balloons-page#readme",
   "devDependencies": {
+    "autoprefixer": "^6.3.7",
     "gulp": "^3.9.0",
     "gulp-clean": "^0.3.2",
+    "gulp-postcss": "^6.1.1",
     "gulp-posthtml": "^1.5.2",
     "gulp-rename": "^1.2.2",
+    "merge-stream": "^1.0.0",
     "postcss": "^5.1.0",
-    "posthtml-minifier": "^0.1.0"
+    "postcss-bgimage": "^1.1.0"
   }
 }
