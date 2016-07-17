@@ -17,14 +17,19 @@ const bgImage = require('postcss-bgimage');
  * @type {object}
  */
 const PATHS = {
-    src: './app/resources/views/pages/',
-    dest: './build/',
-    destWithoutPlugin: './build/without-plugin/',
-    destWithPlugin: './build/with-plugin/'
+    src: {
+        html: './app/resources/views/pages/main.html',
+        css: './app/resources/views/pages/*.css'
+    },
+    dest: {
+        base: './build/',
+        withoutPlugin: './build/without-plugin/',
+        withPlugin: './build/with-plugin/'
+    }
 };
 
 gulp.task('clean', () => {
-    return gulp.src(PATHS.dest, {
+    return gulp.src(PATHS.dest.base, {
         read: false
     })
         .pipe(clean());
@@ -63,14 +68,14 @@ const appendLink = (tree, parent, fileName) => {
  * Build of HTML
  */
 gulp.task('html', () => {
-    let streamWithPlugin = gulp.src(`${PATHS.src}main.html`)
+    let streamWithPlugin = gulp.src(PATHS.src.html)
         .pipe(rename('index.html'))
         .pipe(posthtml((tree) => {
             appendLink(tree, 'head', 'style.css');
         }))
-        .pipe(gulp.dest(PATHS.destWithPlugin));
+        .pipe(gulp.dest(PATHS.dest.withPlugin));
 
-    let streamWithoutPlugin = gulp.src(`${PATHS.src}main.html`)
+    let streamWithoutPlugin = gulp.src(PATHS.src.html)
         .pipe(rename('index.html'))
         .pipe(posthtml((tree) => {
             appendLink(tree, 'head', 'style.top.css');
@@ -78,7 +83,7 @@ gulp.task('html', () => {
         .pipe(posthtml((tree) => {
             appendLink(tree, 'body', 'style.bottom.css');
         }))
-        .pipe(gulp.dest(PATHS.destWithoutPlugin));
+        .pipe(gulp.dest(PATHS.dest.withoutPlugin));
 
     return merge(streamWithPlugin, streamWithoutPlugin);
 });
@@ -87,14 +92,14 @@ gulp.task('html', () => {
  * Build of CSS
  */
 gulp.task('css', () => {
-    let streamWithPlugin = gulp.src(`${PATHS.src}main.css`)
+    let streamWithPlugin = gulp.src(PATHS.src.css)
         .pipe(rename('style.css'))
         .pipe(postcss([
             autoprefixer()
         ]))
-        .pipe(gulp.dest(PATHS.destWithPlugin));
+        .pipe(gulp.dest(PATHS.dest.withPlugin));
 
-    let streamWithoutPluginTop = gulp.src(`${PATHS.src}main.css`)
+    let streamWithoutPluginTop = gulp.src(PATHS.src.css)
         .pipe(rename('style.top.css'))
         .pipe(postcss([
             autoprefixer(),
@@ -102,9 +107,9 @@ gulp.task('css', () => {
                 mode: 'cutter'
             })
         ]))
-        .pipe(gulp.dest(PATHS.destWithoutPlugin));
+        .pipe(gulp.dest(PATHS.dest.withoutPlugin));
 
-    let streamWithoutPluginBottom = gulp.src(`${PATHS.src}main.css`)
+    let streamWithoutPluginBottom = gulp.src(PATHS.src.css)
         .pipe(rename('style.bottom.css'))
         .pipe(postcss([
             autoprefixer(),
@@ -112,7 +117,7 @@ gulp.task('css', () => {
                 mode: 'cutterInvertor'
             })
         ]))
-        .pipe(gulp.dest(PATHS.destWithoutPlugin));
+        .pipe(gulp.dest(PATHS.dest.withoutPlugin));
 
     return merge(streamWithPlugin, streamWithoutPluginTop, streamWithoutPluginBottom);
 });
