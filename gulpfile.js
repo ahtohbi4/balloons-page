@@ -133,7 +133,13 @@ gulp.task('default', [
 /**
  * Build in watch
  */
-gulp.task('watch', ['default'], () => {
-    gulp.watch(`${PATHS.src}*.css`, ['css']);
-    gulp.watch(`${PATHS.src}*.html`, ['html']);
+gulp.task('watch', [
+    'default'
+], () => {
+    gulp.watch(PATHS.src.css, [
+        'css'
+    ]);
+    gulp.watch(PATHS.src.html, [
+        'html'
+    ]);
 });
