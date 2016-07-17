@@ -11,6 +11,11 @@ const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const bgImage = require('postcss-bgimage');
 
+/**
+ * Paths
+ *
+ * @type {object}
+ */
 const PATHS = {
     src: './app/resources/views/pages/',
     dest: './build/',
@@ -54,6 +59,9 @@ const appendLink = (tree, parent, fileName) => {
     });
 };
 
+/**
+ * Build of HTML
+ */
 gulp.task('html', () => {
     let streamWithPlugin = gulp.src(`${PATHS.src}main.html`)
         .pipe(rename('index.html'))
@@ -75,6 +83,9 @@ gulp.task('html', () => {
     return merge(streamWithPlugin, streamWithoutPlugin);
 });
 
+/**
+ * Build of CSS
+ */
 gulp.task('css', () => {
     let streamWithPlugin = gulp.src(`${PATHS.src}main.css`)
         .pipe(rename('style.css'))
@@ -106,11 +117,17 @@ gulp.task('css', () => {
     return merge(streamWithPlugin, streamWithoutPluginTop, streamWithoutPluginBottom);
 });
 
+/**
+ * Build by default
+ */
 gulp.task('default', [
     'css',
     'html'
 ]);
 
+/**
+ * Build in watch
+ */
 gulp.task('watch', ['default'], () => {
     gulp.watch(`${PATHS.src}*.css`, ['css']);
     gulp.watch(`${PATHS.src}*.html`, ['html']);
