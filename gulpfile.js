@@ -23,13 +23,42 @@ gulp.task('clean', () => {
         .pipe(clean());
 });
 
+const appendLink = (tree, parent, fileName) => {
+    tree.match({
+        tag: parent
+    }, (node) => {
+        let link = {
+            tag: 'link',
+            attrs: {
+                rel: 'stylesheet',
+                href: fileName
+            }
+        };
+
+        node.content.push('\n    ');
+        node.content.push(link);
+        node.content.push('\n');
+
+        return node;
+    });
+};
+
 gulp.task('html', () => {
     let streamWithPlugin = gulp.src(`${PATHS.src}main.html`)
         .pipe(rename('index.html'))
+        .pipe(posthtml((tree) => {
+            appendLink(tree, 'head', 'style.css');
+        }))
         .pipe(gulp.dest(`${PATHS.dest}without-plugin/`));
 
     let streamWithoutPlugin = gulp.src(`${PATHS.src}main.html`)
         .pipe(rename('index.html'))
+        .pipe(posthtml((tree) => {
+            appendLink(tree, 'head', 'style.top.css');
+        }))
+        .pipe(posthtml((tree) => {
+            appendLink(tree, 'body', 'style.bottom.css');
+        }))
         .pipe(gulp.dest(`${PATHS.dest}with-plugin/`));
 
     return merge(streamWithPlugin, streamWithoutPlugin);
