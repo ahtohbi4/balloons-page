@@ -10,6 +10,7 @@ const posthtml = require('gulp-posthtml');
 const postcss = require('gulp-postcss');
 const autoprefixer = require('autoprefixer');
 const bgImage = require('postcss-bgimage');
+const atImport = require('postcss-import');
 
 /**
  * Paths
@@ -95,6 +96,7 @@ gulp.task('css', () => {
     let streamWithPlugin = gulp.src(PATHS.src.css)
         .pipe(rename('style.css'))
         .pipe(postcss([
+            atImport(),
             autoprefixer()
         ]))
         .pipe(gulp.dest(PATHS.dest.withPlugin));
@@ -102,6 +104,7 @@ gulp.task('css', () => {
     let streamWithoutPluginTop = gulp.src(PATHS.src.css)
         .pipe(rename('style.top.css'))
         .pipe(postcss([
+            atImport(),
             autoprefixer(),
             bgImage({
                 mode: 'cutter'
@@ -112,6 +115,7 @@ gulp.task('css', () => {
     let streamWithoutPluginBottom = gulp.src(PATHS.src.css)
         .pipe(rename('style.bottom.css'))
         .pipe(postcss([
+            atImport(),
             autoprefixer(),
             bgImage({
                 mode: 'cutterInvertor'

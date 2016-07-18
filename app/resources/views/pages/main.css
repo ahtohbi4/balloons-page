@@ -1,3 +1,14 @@
+@import url('normalize.css');
+
+/* page */
+.page {
+    background: linear-gradient(#c1e9f0, #fff 874px) 0 0 repeat-x;
+}
+.page__content {
+    width: 950px;
+    margin: 0 auto;
+}
+
 /* menu */
 .menu__items {
     margin: 0;
