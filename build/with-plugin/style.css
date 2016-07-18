@@ -7,6 +7,13 @@
 .menu__item {
     display: inline-block;
 }
+.menu__item-link {
+    text-decoration: none;
+    cursor: pointer;
+}
+.menu__item-link:hover {
+    text-decoration: underline;
+}
 
 /* timeline */
 .timeline {
@@ -24,20 +31,21 @@
 .timeline__event:nth-of-type(even) {
     margin-right: 50%;
 }
-.timeline__event:nth-of-type(odd) .timeline__event-date {
+.timeline__event-date {
     position: absolute;
-    right: 100%;
     width: 100%;
+    box-sizing: border-box;
+    font-weight: bold;
+    font-style: italic;
+}
+.timeline__event:nth-of-type(odd) .timeline__event-date {
+    right: 100%;
     text-align: right;
     padding-right: 10px;
-    box-sizing: border-box;
 }
 .timeline__event:nth-of-type(even) .timeline__event-date {
-    position: absolute;
     left: 100%;
-    width: 100%;
     padding-left: 10px;
-    box-sizing: border-box;
 }
 .timeline__event:nth-of-type(odd) .timeline__event-description {
     padding-left: 10px;
