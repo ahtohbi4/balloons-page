@@ -15,8 +15,8 @@
     right: 0;
     left: 0;
     z-index: -1;
-    height: 300px;
-    background-position: -600px 0;
+    height: 374px;
+    background-position: -800px 0;
     background-repeat: no-repeat;
     background-image: url(../../app/resources/views/pages/page__cloud.png);
     animation: drift 60s linear infinite;
@@ -24,7 +24,7 @@
 }
 @keyframes drift {
     to {
-        background-position: 100% 0;
+        background-position: calc(100% + 800px) 0;
     }
 }
 .page__content {

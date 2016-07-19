@@ -437,8 +437,8 @@ textarea {
     right: 0;
     left: 0;
     z-index: -1;
-    height: 300px;
-    background-position: -600px 0;
+    height: 374px;
+    background-position: -800px 0;
     background-repeat: no-repeat;
     -webkit-animation: drift 60s linear infinite;
             animation: drift 60s linear infinite;
@@ -447,13 +447,13 @@ textarea {
 
 @-webkit-keyframes drift {
     to {
-        background-position: 100% 0;
+        background-position: calc(100% + 800px) 0;
     }
 }
 
 @keyframes drift {
     to {
-        background-position: 100% 0;
+        background-position: calc(100% + 800px) 0;
     }
 }
 
