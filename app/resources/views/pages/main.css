@@ -2,9 +2,9 @@
 
 /* page */
 .page {
-    background-image: url(../../app/resources/views/pages/page__bg-sky.jpg), linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px);
-    background-repeat: no-repeat, repeat-x;
-    background-position: 50% 0, 0 0;
+    background-image: url(../../app/resources/views/pages/page__balloons.png), url(../../app/resources/views/pages/page__bg-sky.jpg), linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px);
+    background-repeat: no-repeat, no-repeat, repeat-x;
+    background-position: calc(50% - 290px) 0, 50% 0, 0 0;
     font: 100 16px/20px 'Trebuchet MS', Helvetica, sans-serif;
     color: #434343;
 }

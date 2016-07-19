@@ -196,8 +196,8 @@
 /* page */
 
 .page {
-    background-image: url(../../app/resources/views/pages/page__bg-sky.jpg), -webkit-linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px);
-    background-image: url(../../app/resources/views/pages/page__bg-sky.jpg), linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px);
+    background-image: url(../../app/resources/views/pages/page__balloons.png), url(../../app/resources/views/pages/page__bg-sky.jpg), -webkit-linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px);
+    background-image: url(../../app/resources/views/pages/page__balloons.png), url(../../app/resources/views/pages/page__bg-sky.jpg), linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px);
 }
 
 .page::before {
