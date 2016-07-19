@@ -74,7 +74,7 @@ gulp.task('html', () => {
         .pipe(posthtml((tree) => {
             appendLink(tree, 'head', 'style.css');
         }))
-        .pipe(gulp.dest(PATHS.dest.withPlugin));
+        .pipe(gulp.dest(PATHS.dest.withoutPlugin));
 
     let streamWithoutPlugin = gulp.src(PATHS.src.html)
         .pipe(rename('index.html'))
@@ -84,7 +84,7 @@ gulp.task('html', () => {
         .pipe(posthtml((tree) => {
             appendLink(tree, 'body', 'style.bottom.css');
         }))
-        .pipe(gulp.dest(PATHS.dest.withoutPlugin));
+        .pipe(gulp.dest(PATHS.dest.withPlugin));
 
     return merge(streamWithPlugin, streamWithoutPlugin);
 });
@@ -99,7 +99,7 @@ gulp.task('css', () => {
             atImport(),
             autoprefixer()
         ]))
-        .pipe(gulp.dest(PATHS.dest.withPlugin));
+        .pipe(gulp.dest(PATHS.dest.withoutPlugin));
 
     let streamWithoutPluginTop = gulp.src(PATHS.src.css)
         .pipe(rename('style.top.css'))
@@ -110,7 +110,7 @@ gulp.task('css', () => {
                 mode: 'cutter'
             })
         ]))
-        .pipe(gulp.dest(PATHS.dest.withoutPlugin));
+        .pipe(gulp.dest(PATHS.dest.withPlugin));
 
     let streamWithoutPluginBottom = gulp.src(PATHS.src.css)
         .pipe(rename('style.bottom.css'))
@@ -121,7 +121,7 @@ gulp.task('css', () => {
                 mode: 'cutterInvertor'
             })
         ]))
-        .pipe(gulp.dest(PATHS.dest.withoutPlugin));
+        .pipe(gulp.dest(PATHS.dest.withPlugin));
 
     return merge(streamWithPlugin, streamWithoutPluginTop, streamWithoutPluginBottom);
 });
