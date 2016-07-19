@@ -424,9 +424,12 @@ textarea {
 /* page */
 
 .page {
-    background: -webkit-linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px) 0 0 repeat-x;
-    background: linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px) 0 0 repeat-x;
-    font-family: 'Trebuchet MS', Helvetica, sans-serif;
+    background-image: url(../../app/resources/views/pages/page__bg-sky.jpg), -webkit-linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px);
+    background-image: url(../../app/resources/views/pages/page__bg-sky.jpg), linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px);
+    background-repeat: no-repeat, repeat-x;
+    background-position: 50% 0, 0 0;
+    font: 100 16px/20px 'Trebuchet MS', Helvetica, sans-serif;
+    color: #434343;
 }
 
 .page__content {
