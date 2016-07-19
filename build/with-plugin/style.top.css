@@ -430,6 +430,33 @@ textarea {
     color: #434343;
 }
 
+.page::before {
+    /* animated cloud */
+    position: absolute;
+    top: 50px;
+    right: 0;
+    left: 0;
+    z-index: -1;
+    height: 300px;
+    background-position: -600px 0;
+    background-repeat: no-repeat;
+    -webkit-animation: drift 60s linear infinite;
+            animation: drift 60s linear infinite;
+    content: '';
+}
+
+@-webkit-keyframes drift {
+    to {
+        background-position: 100% 0;
+    }
+}
+
+@keyframes drift {
+    to {
+        background-position: 100% 0;
+    }
+}
+
 .page__content {
     width: 950px;
     margin: 0 auto;

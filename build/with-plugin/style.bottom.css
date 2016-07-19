@@ -200,6 +200,17 @@
     background-image: url(../../app/resources/views/pages/page__bg-sky.jpg), linear-gradient(#c1e9f0, rgba(193, 233, 240, 0) 874px);
 }
 
+.page::before {
+    /* animated cloud */
+    background-image: url(../../app/resources/views/pages/page__cloud.png);
+}
+
+@-webkit-keyframes drift {
+}
+
+@keyframes drift {
+}
+
 /* text */
 
 /* header */
