@@ -217,4 +217,10 @@
 
 /* menu */
 
+/* quotation */
+
+.quotation::after {
+    background: url(../../app/resources/views/pages/quotation__astronomer.png) 0 0 no-repeat;
+}
+
 /* timeline */
